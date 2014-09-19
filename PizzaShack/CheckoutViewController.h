@@ -10,4 +10,5 @@
 
 @interface CheckoutViewController : UIViewController
 @property NSManagedObjectContext* managedObjectContext;
+@property NSMutableArray* items;
 @end

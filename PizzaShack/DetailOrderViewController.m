@@ -134,6 +134,18 @@
 {
     self.quantity = 1;
     self.dressingArray = @[@"Sonoma Italian", @"Thousand Island", @"Blue Cheese", @"Ranch", @"Tamari", @"Raspberry Vinaigrette"];
+    self.view.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.view.layer.borderWidth = 2.0f;
+    self.addToCartButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.addToCartButton.layer.borderWidth = 2.0f;
+    self.quantityButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.quantityButton.layer.borderWidth = 2.0f;
+    self.dressingButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.dressingButton.layer.borderWidth = 2.0f;
+    self.bigQuantityButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.bigQuantityButton.layer.borderWidth = 2.0f;
+    self.foodRequestTextField.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.foodRequestTextField.layer.borderWidth = 2.0f;
     self.foodRequestTextField.textColor = GREENCOLOR;
     PFFile* file = self.item[@"photo"];
     [self correctSegmentControl];

@@ -59,6 +59,8 @@
 
 -(void) updateLocation
 {
+    self.view.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.view.layer.borderWidth = 2.0f;
     self.paymentMethodTableView.tag = 1;
     self.storeLocationTableView.tag = 2;
     self.paymentArray = [NSMutableArray new];
@@ -188,6 +190,7 @@
     } else {
         Store* store = [self.storeArray objectAtIndex:indexPath.row];
         self.favStore.name = store.name;
+        self.favStore.address = store.address;
         [self.managedObjectContext save:nil];
         if ([[self.storeArray objectAtIndex:self.storeArray.count-1] isKindOfClass:[NSNumber class]]) {
             [self.storeArray replaceObjectAtIndex:self.storeArray.count-1 withObject:[NSNumber numberWithInteger:indexPath.row]];

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="FavoriteStore" representedClassName="FavoriteStore" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
@@ -34,7 +35,7 @@
         <attribute name="holder" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FavoriteStore" positionX="279" positionY="270" width="128" height="60"/>
+        <element name="FavoriteStore" positionX="279" positionY="270" width="128" height="75"/>
         <element name="Item" positionX="261" positionY="198" width="128" height="180"/>
         <element name="Location" positionX="270" positionY="261" width="128" height="88"/>
         <element name="Order" positionX="270" positionY="207" width="128" height="103"/>

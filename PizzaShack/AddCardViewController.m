@@ -34,6 +34,8 @@
 - (void)populateView
 {
     UIColor *color = GREENCOLOR;
+    self.view.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.view.layer.borderWidth = 2.0f;
     self.cardNumber.textColor = color;
     self.cardHolder.textColor = color;
     self.cardNumber.attributedPlaceholder =

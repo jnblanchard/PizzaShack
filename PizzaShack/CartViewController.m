@@ -38,7 +38,8 @@
     self.checkoutButton.clipsToBounds = YES;
     self.checkoutButton.layer.cornerRadius = 10;
     self.checkoutButton.backgroundColor = REDCOLOR;
-
+    self.checkoutButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.checkoutButton.layer.borderWidth = 2.0f;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -216,6 +217,7 @@
     if ([segue.destinationViewController isKindOfClass:[CheckoutViewController class]]) {
         CheckoutViewController* cvc = segue.destinationViewController;
         cvc.managedObjectContext = self.managedObjectContext;
+        cvc.items = self.items;
     }
     if ([segue.destinationViewController isKindOfClass:[WalletViewController class]]) {
         WalletViewController* wvc = segue.destinationViewController;

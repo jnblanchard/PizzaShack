@@ -25,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.view.layer.borderWidth = 2.0f;
     self.typeTableView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.typeTableView.layer.borderWidth = 2.0f;
     [self populateFoodTypeArray];

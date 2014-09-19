@@ -37,6 +37,8 @@
 - (void) setUpViews
 {
     self.locations = [NSMutableArray new];
+    self.view.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.view.layer.borderWidth = 2.0f;
     self.customAlertView.backgroundColor = GREENCOLOR;
     self.customAlertView.clipsToBounds = YES;
     self.customAlertView.layer.cornerRadius = 160;
