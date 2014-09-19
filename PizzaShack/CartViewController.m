@@ -61,6 +61,13 @@
             self.total = [NSNumber numberWithFloat:self.total.floatValue+item.price.floatValue];
         }
     }
+    if (!self.total) {
+        self.checkoutButton.hidden = YES;
+        self.checkoutButton.userInteractionEnabled = NO;
+    } else {
+        self.checkoutButton.hidden = NO;
+        self.checkoutButton.userInteractionEnabled = YES;
+    }
     [self.tableView reloadData];
 }
 
@@ -166,10 +173,14 @@
         cell.secondaryTextLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
         cell.secondaryTextLabel.textAlignment = NSTextAlignmentCenter;
         cell.subTotal.textColor = REDCOLOR;
+        self.checkoutButton.hidden = NO;
+        self.checkoutButton.userInteractionEnabled = YES;
          if (self.items.count > 0) {
             cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%lu items in your cart", (unsigned long)self.items.count];
         } else {
             cell.secondaryTextLabel.text = [NSString stringWithFormat:@"empty cart"];
+            self.checkoutButton.hidden = YES;
+            self.checkoutButton.userInteractionEnabled = NO;
         }
         if (self.items.count == 1) {
             cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%lu item in your cart", (unsigned long)self.items.count];

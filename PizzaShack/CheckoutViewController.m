@@ -45,9 +45,11 @@
     self.placeOrderButton.layer.cornerRadius = 10;
     self.placeOrderButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.placeOrderButton.layer.borderWidth = 2.0f;
-    self.locationMainLabel.backgroundColor = REDCOLOR;
-    self.locationSecondaryLabel.backgroundColor = REDCOLOR;
+    self.locationMainLabel.backgroundColor = GREENCOLOR;
+    self.locationSecondaryLabel.backgroundColor = GREENCOLOR;
     self.locationSegmentedControl.tintColor = REDCOLOR;
+    self.locationMainLabel.textColor = DARKBAYCOLOR;
+    self.locationSecondaryLabel.textColor = DARKBAYCOLOR;
     self.locationMainLabel.clipsToBounds = YES;
     self.locationSecondaryLabel.clipsToBounds = YES;
     self.locationMainLabel.layer.cornerRadius = 10;
@@ -82,13 +84,20 @@
         [self.deliveryLocationButton setTitle:@"Change Delivery Location" forState:UIControlStateNormal];
         NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Location"];
         NSArray* temp = [self.managedObjectContext executeFetchRequest:request error:nil];
+        BOOL flag = NO;
         for (Location* location in temp) {
             if (location.favorite) {
                 self.locationMainLabel.text = [NSString stringWithFormat:@"  %@",location.streetAddress];
                 self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  %@",location.addressDetail];
+                flag = YES;
             }
         }
+        if (!flag) {
+            self.locationMainLabel.text = [NSString stringWithFormat:@"  Street Address"];
+            self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  City, State"];
+        }
     } else {
+        [self.deliveryLocationButton setTitle:@"Change Pickup Location" forState:UIControlStateNormal];
         self.locationMainLabel.text = [NSString stringWithFormat:@"  Shack"];
         self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  Shack Address"];
         NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"FavoriteStore"];

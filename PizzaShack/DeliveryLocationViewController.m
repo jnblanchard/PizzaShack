@@ -119,6 +119,9 @@
         Location* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.managedObjectContext];
         location.streetAddress = self.streetAdressTextField.text;
         location.addressDetail = self.detailStreetAddressTextField.text;
+        if (!self.locations.count) {
+            location.favorite = [NSNumber numberWithInteger:1];
+        }
         [self.managedObjectContext save:nil];
         [self loadData];
     } else {

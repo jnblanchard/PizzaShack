@@ -141,8 +141,7 @@
                 }
             }
         } else {
-            FavoriteStore* fav = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteStore" inManagedObjectContext:self.managedObjectContext];
-            fav.name = @"";
+            self.favStore = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteStore" inManagedObjectContext:self.managedObjectContext];
             [self.managedObjectContext save:nil];
         }
         [self.storeLocationTableView reloadData];
