@@ -1,0 +1,22 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "Parse/Parse.h"
+    #define REDCOLOR [UIColor colorWithRed:0.78 green:0 blue:0.0078 alpha:1];
+    #define BAYCOLOR [UIColor colorWithRed:0.96 green:0.92 blue:0.73 alpha:1];
+    #define GREENCOLOR [UIColor colorWithRed:0 green:0.43 blue:0.25 alpha:1];
+    #define DARKBAYCOLOR [UIColor colorWithRed:1 green:0.85 blue:0.41 alpha:1];
+#endif
