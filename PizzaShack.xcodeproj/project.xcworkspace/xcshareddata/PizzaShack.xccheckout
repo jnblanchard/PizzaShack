@@ -10,22 +10,26 @@
 	<string>PizzaShack</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>18F7CAD16EF44EE04F0F1B50587E56599AFEA236</key>
+		<string>https://github.com/jnblanchard/PizzaShack.git</string>
 		<key>4DE9968F-AB00-49F2-B24F-F43443B0F678</key>
 		<string>https://github.com/jnblanchard/GreenDoor.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>PizzaShack/PizzaShack.xcodeproj/project.xcworkspace</string>
+	<string>PizzaShack.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>18F7CAD16EF44EE04F0F1B50587E56599AFEA236</key>
+		<string>../..</string>
 		<key>4DE9968F-AB00-49F2-B24F-F43443B0F678</key>
-		<string>../../..</string>
+		<string>../../../GreenDoor</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/jnblanchard/GreenDoor.git</string>
+	<string>https://github.com/jnblanchard/PizzaShack.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4DE9968F-AB00-49F2-B24F-F43443B0F678</string>
+	<string>18F7CAD16EF44EE04F0F1B50587E56599AFEA236</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>4DE9968F-AB00-49F2-B24F-F43443B0F678</string>
 			<key>IDESourceControlWCCName</key>
 			<string>GreenDoor</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18F7CAD16EF44EE04F0F1B50587E56599AFEA236</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PizzaShack</string>
 		</dict>
 	</array>
 </dict>

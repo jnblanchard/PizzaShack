@@ -134,12 +134,14 @@
 {
     self.quantity = 1;
     self.dressingArray = @[@"Sonoma Italian", @"Thousand Island", @"Blue Cheese", @"Ranch", @"Tamari", @"Raspberry Vinaigrette"];
+    self.foodRequestTextField.textColor = GREENCOLOR;
     PFFile* file = self.item[@"photo"];
     [self correctSegmentControl];
     [self populateAddItems];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             self.itemImageView.image = [UIImage imageWithData:data];
+            self.itemImageView.contentMode = UIViewContentModeScaleAspectFit;
         }
     }];
     if ([self.navigationItem.title hasSuffix:@"Salad"] || [self.navigationItem.title hasSuffix:@"Salad Combo"]) {

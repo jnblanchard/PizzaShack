@@ -22,6 +22,8 @@
 {
     [super viewDidLoad];
     self.foodTableView.backgroundColor = DARKBAYCOLOR;
+    self.foodTableView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.foodTableView.layer.borderWidth = 2.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -32,6 +34,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    cell.layer.borderWidth = 1.0f;
+    UIView* view = [UIView new];
+    view.backgroundColor = BAYCOLOR;
+    cell.selectedBackgroundView = view;
     cell.backgroundColor = BAYCOLOR;
     PFObject* object = [self.foodList objectAtIndex:indexPath.row];
     cell.textLabel.text = object[@"name"];

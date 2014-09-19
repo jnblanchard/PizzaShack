@@ -25,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.typeTableView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.typeTableView.layer.borderWidth = 2.0f;
     [self populateFoodTypeArray];
 }
 
@@ -68,6 +70,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    cell.layer.borderWidth = 1.0f;
+    UIView* view = [UIView new];
+    view.backgroundColor = BAYCOLOR;
+    cell.selectedBackgroundView = view;
     cell.backgroundColor = BAYCOLOR;
     cell.numberLabel.textColor = GREENCOLOR;
     cell.numberLabel.backgroundColor = BAYCOLOR;

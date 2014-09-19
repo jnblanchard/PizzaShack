@@ -29,11 +29,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = DARKBAYCOLOR;
     self.tableView.backgroundColor = DARKBAYCOLOR;
     self.tableView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.tableView.layer.borderWidth = 2.0f;
     self.checkoutButton.clipsToBounds = YES;
     self.checkoutButton.layer.cornerRadius = 10;
+    self.checkoutButton.backgroundColor = REDCOLOR;
+
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -47,7 +50,6 @@
 {
     self.items = [NSMutableArray new];
     self.total = [NSNumber numberWithInt:0];
-    self.checkoutButton.backgroundColor = REDCOLOR;
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Item"];
     NSArray* temp = [self.managedObjectContext executeFetchRequest:request error:nil];
     for (Item* item in temp) {
@@ -60,7 +62,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedRowIndex = indexPath.row;
+    self.selectedRowIndex = (int)indexPath.row;
     [tableView beginUpdates];
     [tableView endUpdates];
     CartTableViewCell* cell = (CartTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
@@ -71,7 +73,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     int resize = 100;
-
     if(indexPath.row == self.selectedRowIndex && !self.willSegue) {
         return resize;
     }
@@ -81,6 +82,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CartTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    UIView* accView = [[UIView alloc] initWithFrame:CGRectMake(cell.frame.size.width - 40, cell.frame.origin.y, 40, cell.frame.size.height)];
+//    UILabel* label = [[UILabel alloc] initWithFrame:accView.frame];
+//    [accView addSubview:label];
+//    label.text = @"Delete";
+//    label.textColor = BAYCOLOR;
+//    label.backgroundColor = REDCOLOR;
+//    label.layer.borderColor = [UIColor whiteColor].CGColor;
+//    label.layer.borderWidth = 2.0f;
+//    cell.accessoryView = accView;
     UIView* view = [UIView new];
     view.backgroundColor = BAYCOLOR;
     cell.selectedBackgroundView = view;
@@ -138,12 +148,12 @@
         cell.secondaryTextLabel.textAlignment = NSTextAlignmentCenter;
         cell.subTotal.textColor = REDCOLOR;
          if (self.items.count > 0) {
-            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%u items in your cart", self.items.count];
+            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%lu items in your cart", (unsigned long)self.items.count];
         } else {
-            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"0 items in your cart"];
+            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"empty cart"];
         }
         if (self.items.count == 1) {
-            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%u item in your cart", self.items.count];
+            cell.secondaryTextLabel.text = [NSString stringWithFormat:@"%lu item in your cart", (unsigned long)self.items.count];
         }
         if (self.total.intValue == 0) {
             cell.subTotal.text = [NSString stringWithFormat:@"$0.00"];
@@ -155,6 +165,20 @@
         }
         return cell;
     }
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return true;
+}
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Item* item = [self.items objectAtIndex:indexPath.row];
+    [self.managedObjectContext deleteObject:item];
+    [self.managedObjectContext save:nil];
+    [self grabCurrentOrder];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

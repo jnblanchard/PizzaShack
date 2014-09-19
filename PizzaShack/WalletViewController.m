@@ -147,6 +147,32 @@
     }];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag == 1) {
+        return true;
+    }
+    return false;
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Payment* payment = [self.paymentArray objectAtIndex:indexPath.row];
+    if (payment.favorite || self.paymentArray.count < 2) {
+        NSLog(@"here");
+        self.cardNameLabel.text = @"(Card Holder)";
+        self.cardNumberLabel.text = @"(Card Number)";
+    }
+    [self.managedObjectContext deleteObject:payment];
+    [self.managedObjectContext save:nil];
+    [self populatePaymentArray];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView.tag == 1) {
@@ -177,6 +203,7 @@
     if (tableView.tag == 1) {
         Payment* payment = [self.paymentArray objectAtIndex:indexPath.row];
         CardTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        cell.editingAccessoryView.backgroundColor = REDCOLOR;
         if (payment.favorite || self.paymentArray.count == 1) {
             cell.checkImageView.image = [UIImage imageNamed:@"check"];
             cell.checkImageView.contentMode = UIViewContentModeScaleToFill;

@@ -128,6 +128,9 @@
         self.enterButton.titleLabel.textColor = BAYCOLOR;
         self.dismissButton.titleLabel.textColor = BAYCOLOR;
     }
+    self.streetAdressTextField.text = @"";
+    self.detailStreetAddressTextField.text = @"";
+    self.phoneNumberTextField.text = @"";
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -203,6 +206,26 @@
         }];
         self.customAlertView.alpha = 0;
     }
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return true;
+}
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Location* location = [self.locations objectAtIndex:indexPath.row];
+    [self.managedObjectContext deleteObject:location];
+    [self.managedObjectContext save:nil];
+    [self loadData];
+}
+
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
 }
 
 - (IBAction)textFieldDoneEditing:(UITextField *)sender
