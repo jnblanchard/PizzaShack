@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *checkoutButton;
 @property NSMutableArray* items;
 @property int selectedRowIndex;
+@property int lastSelectedRowIndex;
 @property BOOL willSegue;
 @end
 
@@ -29,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.lastSelectedRowIndex = 3210123;
     self.view.backgroundColor = DARKBAYCOLOR;
     self.tableView.backgroundColor = DARKBAYCOLOR;
     self.tableView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -66,14 +68,22 @@
     [tableView beginUpdates];
     [tableView endUpdates];
     CartTableViewCell* cell = (CartTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.mainTextLabel.frame = CGRectMake(cell.mainTextLabel.frame.origin.x, 3, cell.mainTextLabel.frame.size.width, 25);
-    cell.textView.frame = CGRectMake(cell.textView.frame.origin.x, 18, cell.textView.frame.size.width, 78);
-    cell.subTotal.frame = CGRectMake(cell.subTotal.frame.origin.x, 15, cell.subTotal.frame.size.width, 25);
+    if (self.selectedRowIndex == self.lastSelectedRowIndex) {
+        self.lastSelectedRowIndex = 321310;
+        cell.mainTextLabel.frame = CGRectMake(5, 4, 258, 21);
+        cell.textView.frame = CGRectMake(5, 18, 233, 25);
+        cell.subTotal.frame = CGRectMake(229, 0, 86, 45);
+    } else {
+        self.lastSelectedRowIndex = (int)indexPath.row;
+        cell.mainTextLabel.frame = CGRectMake(cell.mainTextLabel.frame.origin.x, 3, cell.mainTextLabel.frame.size.width, 25);
+        cell.textView.frame = CGRectMake(cell.textView.frame.origin.x, 18, cell.textView.frame.size.width, 78);
+        cell.subTotal.frame = CGRectMake(cell.subTotal.frame.origin.x, 15, cell.subTotal.frame.size.width, 25);
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     int resize = 100;
-    if(indexPath.row == self.selectedRowIndex && !self.willSegue) {
+    if(indexPath.row == self.selectedRowIndex && !self.willSegue && self.selectedRowIndex != self.lastSelectedRowIndex) {
         return resize;
     }
     return 48;
@@ -106,6 +116,14 @@
         cell.userInteractionEnabled = YES;
         cell.secondaryTextLabel.hidden = YES;
         cell.textView.hidden = NO;
+        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+//        UIView* separatorLineViewTwo = [[UIView alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-2, 320, 1)];
+        separatorLineView.alpha = 0.5f;
+//        separatorLineViewTwo.alpha = 0.7f;
+//        separatorLineViewTwo.backgroundColor = REDCOLOR;
+        separatorLineView.backgroundColor = REDCOLOR;;
+        [cell.contentView addSubview:separatorLineView];
+//        [cell.contentView addSubview:separatorLineViewTwo];
         Item* item = [self.items objectAtIndex:indexPath.row];
         cell.layer.borderWidth = 0.0f;
         if (![item.size isEqualToString:@""] || item.size != nil) {
