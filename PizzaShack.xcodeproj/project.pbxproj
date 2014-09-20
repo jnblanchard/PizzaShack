@@ -14,6 +14,7 @@
 		0B1801E719C8E4460094F219 /* DeliveryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1801E619C8E4460094F219 /* DeliveryLocationViewController.m */; };
 		0B1801EA19C8E5A50094F219 /* DeliveryLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1801E919C8E5A50094F219 /* DeliveryLocationTableViewCell.m */; };
 		0B1E03F619C7934700C6B4E5 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1E03F519C7934700C6B4E5 /* WalletViewController.m */; };
+		0B4DA9A219CDEC5200B1B34E /* NonParseFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DA9A119CDEC5200B1B34E /* NonParseFood.m */; };
 		0B7E4DD919CCECE6004E0995 /* FavoriteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DD819CCECE6004E0995 /* FavoriteStore.m */; };
 		0B7E4DDC19CD07C9004E0995 /* ChangeLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DDB19CD07C9004E0995 /* ChangeLocationViewController.m */; };
 		0B7E4DE519CD0CE6004E0995 /* NonParseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DE419CD0CE6004E0995 /* NonParseStore.m */; };
@@ -88,6 +89,8 @@
 		0B1801E919C8E5A50094F219 /* DeliveryLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryLocationTableViewCell.m; sourceTree = "<group>"; };
 		0B1E03F419C7934700C6B4E5 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
 		0B1E03F519C7934700C6B4E5 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
+		0B4DA9A019CDEC5200B1B34E /* NonParseFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonParseFood.h; sourceTree = "<group>"; };
+		0B4DA9A119CDEC5200B1B34E /* NonParseFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonParseFood.m; sourceTree = "<group>"; };
 		0B7E4DD719CCECE6004E0995 /* FavoriteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteStore.h; sourceTree = "<group>"; };
 		0B7E4DD819CCECE6004E0995 /* FavoriteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteStore.m; sourceTree = "<group>"; };
 		0B7E4DDA19CD07C9004E0995 /* ChangeLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeLocationViewController.h; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				0B8D7D7619C5DD82007202A4 /* SoupSalad.m */,
 				0B1801DF19C7BE8A0094F219 /* Store.h */,
 				0B1801E019C7BE8A0094F219 /* Store.m */,
+				0B4DA9A019CDEC5200B1B34E /* NonParseFood.h */,
+				0B4DA9A119CDEC5200B1B34E /* NonParseFood.m */,
 				0B7E4DE319CD0CE6004E0995 /* NonParseStore.h */,
 				0B7E4DE419CD0CE6004E0995 /* NonParseStore.m */,
 				0B8D7D3219C527B0007202A4 /* Images.xcassets */,
@@ -439,6 +444,7 @@
 				0B8D7D7419C5DD72007202A4 /* Appetizer.m in Sources */,
 				0B7E4DD919CCECE6004E0995 /* FavoriteStore.m in Sources */,
 				0B8D7D7719C5DD82007202A4 /* SoupSalad.m in Sources */,
+				0B4DA9A219CDEC5200B1B34E /* NonParseFood.m in Sources */,
 				0B1801E119C7BE8A0094F219 /* Store.m in Sources */,
 				0B1801E719C8E4460094F219 /* DeliveryLocationViewController.m in Sources */,
 				0B8D7D8319C5E9C1007202A4 /* FoodOfTypeListViewController.m in Sources */,

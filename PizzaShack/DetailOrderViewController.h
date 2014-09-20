@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailOrderViewController : UIViewController
-@property PFObject* item;
+@property NonParseFood* item;
 @property NSManagedObjectContext* managedObjectContext;
 @end

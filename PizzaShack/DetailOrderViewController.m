@@ -47,7 +47,7 @@
 
 -(void) correctSegmentControl
 {
-    NSArray* array = self.item[@"segmentedControl"];
+    NSArray* array = self.item.segmentedControl;
     int count = (int)array.count;
     if (!count) {
         self.segmentedControl.hidden = YES;
@@ -69,7 +69,7 @@
 - (IBAction)valueOfSwitchChanged:(UISwitch *)sender
 {
     if (sender.on) {
-        self.addition = self.item[@"addItemPrice"];
+        self.addition = self.item.addItemPrice;
         [self calculatePriceSetLabel];
     } else {
         self.addition = 0;
@@ -79,21 +79,20 @@
 
 - (IBAction)sizeSegmentedControlChange:(UISegmentedControl *)sender
 {
-    NSArray* array = self.item[@"priceControl"];
+    NSArray* array = self.item.priceControl;
     self.price = [array objectAtIndex:sender.selectedSegmentIndex];
-    NSLog(@"price - %@", self.price);
     [self calculatePriceSetLabel];
 }
 
 - (void) populateAddItems
 {
-    self.addItem = self.item[@"addItem"];
+    self.addItem = self.item.addItem;
     if (self.addItem) {
         self.addSwitch.hidden = NO;
         self.addLabel.hidden = NO;
         self.addSwitch.thumbTintColor = BAYCOLOR;
         self.addSwitch.onTintColor = GREENCOLOR;
-        self.addition = self.item[@"addItemPrice"];
+        self.addition = self.item.addItemPrice;
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
         NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:self.addition.floatValue]];
@@ -147,15 +146,10 @@
     self.foodRequestTextField.layer.borderColor = [UIColor whiteColor].CGColor;
     self.foodRequestTextField.layer.borderWidth = 2.0f;
     self.foodRequestTextField.textColor = GREENCOLOR;
-    PFFile* file = self.item[@"photo"];
+    self.itemImageView.image = self.item.photo;
+    self.itemImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self correctSegmentControl];
     [self populateAddItems];
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            self.itemImageView.image = [UIImage imageWithData:data];
-            self.itemImageView.contentMode = UIViewContentModeScaleAspectFit;
-        }
-    }];
     if ([self.navigationItem.title hasSuffix:@"Salad"] || [self.navigationItem.title hasSuffix:@"Salad Combo"]) {
         self.dressingButton.hidden = NO;
         self.dressingButton.enabled = YES;
@@ -196,9 +190,9 @@
     self.priceLabel.textColor = [UIColor whiteColor];
     self.bigPriceLabel.textColor = [UIColor whiteColor];
     self.dressingButton.titleLabel.textColor = [UIColor whiteColor];
-    self.price = self.item[@"price"];
+    self.price = self.item.price;
     [self calculatePriceSetLabel];
-    self.detailTextView.text = self.item[@"detail"];
+    self.detailTextView.text = self.item.detail;
     [self.detailTextView setFont:[UIFont fontWithName:@"Helvetica" size:16]];
 }
 

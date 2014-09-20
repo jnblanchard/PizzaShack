@@ -44,6 +44,20 @@
 - (IBAction)resignTheResponders:(UITextField *)sender
 {
     [sender resignFirstResponder];
+
+    NSArray* array = @[
+                       [[NonParseFood alloc] initWithString:@"Cobb Salad" withPrice:[NSNumber numberWithFloat:12.45] withSegmentedControl:@[] withPriceControl:@[] withAddItem:@"" withaddItemPrice:nil withDetail:@"Chicken, bacon, blue cheese, egg, avocado and marinated tomatoes on chopped lettuce." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Southwestern Shrimp Salad" withPrice:[NSNumber numberWithFloat:12.55] withSegmentedControl:@[] withPriceControl:@[] withAddItem:@"" withaddItemPrice:nil withDetail:@"Spicy seared shrimp on a bed of black beans, corn, green onions, crispy tortilla strips, fresh tomatoes and shredded lettuce tossed with cilantro-ranch dressing." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Italian Chopped Salad" withPrice:[NSNumber numberWithFloat:9.65] withSegmentedControl:@[] withPriceControl:@[] withAddItem:@"" withaddItemPrice:nil withDetail:@"Julienned salami and pepperoni, grated parmesan, sliced olives and garbanzo beans all tossed with shredded lettuce and our famous homemade Sonoma Italian dressing. Served with our fresh focaccia." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Spinach Salad" withPrice:[NSNumber numberWithFloat:9.15] withSegmentedControl:@[] withPriceControl:@[] withAddItem:@"Add chicken" withaddItemPrice:@3 withDetail:@"Fresh spinach tossed with walnuts, raisins, cranberries, red onions and crumbled blue cheese.  We recommend our tamari dressing." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Caesar Salad" withPrice:[NSNumber numberWithFloat:5.65] withSegmentedControl:@[@"Small", @"Large"] withPriceControl:@[@5.65, @9.15] withAddItem:@"" withaddItemPrice:nil withDetail:@"Romaine lettuce, fresh Sonoma sourdough croutons and grated parmesan cheese tossed with Mary’s special Caesar dressing." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Mary's Signature Salad" withPrice:[NSNumber numberWithFloat:5.75] withSegmentedControl:@[@"Small", @"Large"] withPriceControl:@[@5.75, @9.95] withAddItem:@"Add chicken" withaddItemPrice:@3 withDetail:@"Straight from the Original Shack. Sliced salami, grated mozzarella, marinated three-bean salad, hard-cooked eggs, sliced beets and fresh carrots, mushrooms, tomato and red onion on a bed of iceberg lettuce." withImage:[UIImage imageNamed:@"saladsoup"]],
+                        [[NonParseFood alloc] initWithString:@"Soup & Salad Combo" withPrice:[NSNumber numberWithFloat:9.60] withSegmentedControl:@[] withPriceControl:@[] withAddItem:@"" withaddItemPrice:nil withDetail:@"A bowl of our homemade soup of the day and your choice of a small Mary’s or Caesar salad served with fresh sourdough bread." withImage:nil],
+                       [[NonParseFood alloc] initWithString:@"Homemade Soup of the Day" withPrice:[NSNumber numberWithFloat:3] withSegmentedControl:@[@"Cup", @"Bowl"] withPriceControl:@[@3, @5.95] withAddItem:@"" withaddItemPrice:nil withDetail:@"Made from Mary’s own family recipes, and changing with the day and the season.  Served with fresh bread." withImage:nil]];
+
+
+
+
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

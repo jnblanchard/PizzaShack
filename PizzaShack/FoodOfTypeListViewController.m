@@ -42,9 +42,9 @@
     view.backgroundColor = BAYCOLOR;
     cell.selectedBackgroundView = view;
     cell.backgroundColor = BAYCOLOR;
-    PFObject* object = [self.foodList objectAtIndex:indexPath.row];
-    cell.textLabel.text = object[@"name"];
-    NSNumber* price = object[@"price"];
+    NonParseFood* object = [self.foodList objectAtIndex:indexPath.row];
+    cell.textLabel.text = object.name;
+    NSNumber* price = object.price;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:price.floatValue]];
@@ -59,7 +59,7 @@
         DetailOrderViewController* dvc = segue.destinationViewController;
         dvc.item = [self.foodList objectAtIndex:self.foodTableView.indexPathForSelectedRow.row];
         dvc.managedObjectContext = self.managedObjectContext;
-        dvc.navigationItem.title = dvc.item[@"name"];
+        dvc.navigationItem.title = dvc.item.name;
     }
     if ([segue.destinationViewController isKindOfClass:[MenuViewController class]]) {
         MenuViewController* mvc = segue.destinationViewController;

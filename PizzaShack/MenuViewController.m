@@ -41,22 +41,28 @@
     self.navigationController.navigationBar.barTintColor = REDCOLOR;
     self.navigationController.navigationBar.translucent = NO;
     self.typeTableView.backgroundColor = DARKBAYCOLOR;
-    PFQuery* appetizersQuery = [Appetizer query];
-    [appetizersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:objects];
-        [temp addObject:@"Appetizers"];
-        [temp addObject:[UIImage imageNamed:@"bread"]];
-        [self.foodTypes addObject:temp];
-        [self.typeTableView reloadData];
-    }];
-    PFQuery* soupSaladQuery = [SoupSalad query];
-    [soupSaladQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:objects];
-        [temp addObject:@"Soups & Salads"];
-        [temp addObject:[UIImage imageNamed:@"salad"]];
-        [self.foodTypes addObject:temp];
-        [self.typeTableView reloadData];
-    }];
+    NSArray* array = nonParseSoupSaladdArray;
+    NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:array];
+    [temp addObject:@"Soups & Salads"];
+    [temp addObject:[UIImage imageNamed:@"salad"]];
+    [self.foodTypes addObject:temp];
+
+//    PFQuery* appetizersQuery = [Appetizer query];
+//    [appetizersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:objects];
+//        [temp addObject:@"Appetizers"];
+//        [temp addObject:[UIImage imageNamed:@"bread"]];
+//        [self.foodTypes addObject:temp];
+//        [self.typeTableView reloadData];
+//    }];
+//    PFQuery* soupSaladQuery = [SoupSalad query];
+//    [soupSaladQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:objects];
+//        [temp addObject:@"Soups & Salads"];
+//        [temp addObject:[UIImage imageNamed:@"salad"]];
+//        [self.foodTypes addObject:temp];
+//        [self.typeTableView reloadData];
+//    }];
 }
 
 -(void) fixArrayOrder
