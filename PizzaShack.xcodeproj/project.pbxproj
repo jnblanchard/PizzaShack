@@ -15,6 +15,9 @@
 		0B1801EA19C8E5A50094F219 /* DeliveryLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1801E919C8E5A50094F219 /* DeliveryLocationTableViewCell.m */; };
 		0B1E03F619C7934700C6B4E5 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1E03F519C7934700C6B4E5 /* WalletViewController.m */; };
 		0B7E4DD919CCECE6004E0995 /* FavoriteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DD819CCECE6004E0995 /* FavoriteStore.m */; };
+		0B7E4DDC19CD07C9004E0995 /* ChangeLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DDB19CD07C9004E0995 /* ChangeLocationViewController.m */; };
+		0B7E4DE519CD0CE6004E0995 /* NonParseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DE419CD0CE6004E0995 /* NonParseStore.m */; };
+		0B7E4DEB19CD3969004E0995 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E4DEA19CD3969004E0995 /* Location.m */; };
 		0B8D7D1319C527B0007202A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8D7D1219C527AF007202A4 /* Foundation.framework */; };
 		0B8D7D1519C527B0007202A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8D7D1419C527B0007202A4 /* CoreGraphics.framework */; };
 		0B8D7D1719C527B0007202A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8D7D1619C527B0007202A4 /* UIKit.framework */; };
@@ -53,7 +56,6 @@
 		0B8D7D8619C5F119007202A4 /* DetailOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D7D8519C5F119007202A4 /* DetailOrderViewController.m */; };
 		0B8D7D8C19C654A3007202A4 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D7D8B19C654A3007202A4 /* Order.m */; };
 		0B8D7D8F19C7520E007202A4 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D7D8E19C7520E007202A4 /* MenuTableViewCell.m */; };
-		0B8E36C419C9381B00B32A5D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36C319C9381B00B32A5D /* Location.m */; };
 		0B8E36CA19C941EE00B32A5D /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36C919C941EE00B32A5D /* Payment.m */; };
 		0B8E36D019CA4FBD00B32A5D /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36CF19CA4FBD00B32A5D /* CartViewController.m */; };
 		0B8E36D319CA4FE300B32A5D /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36D219CA4FE300B32A5D /* CartTableViewCell.m */; };
@@ -88,6 +90,12 @@
 		0B1E03F519C7934700C6B4E5 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
 		0B7E4DD719CCECE6004E0995 /* FavoriteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteStore.h; sourceTree = "<group>"; };
 		0B7E4DD819CCECE6004E0995 /* FavoriteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteStore.m; sourceTree = "<group>"; };
+		0B7E4DDA19CD07C9004E0995 /* ChangeLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeLocationViewController.h; sourceTree = "<group>"; };
+		0B7E4DDB19CD07C9004E0995 /* ChangeLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeLocationViewController.m; sourceTree = "<group>"; };
+		0B7E4DE319CD0CE6004E0995 /* NonParseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonParseStore.h; sourceTree = "<group>"; };
+		0B7E4DE419CD0CE6004E0995 /* NonParseStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonParseStore.m; sourceTree = "<group>"; };
+		0B7E4DE919CD3969004E0995 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		0B7E4DEA19CD3969004E0995 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		0B8D7D0F19C527AF007202A4 /* PizzaShack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaShack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8D7D1219C527AF007202A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B8D7D1419C527B0007202A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,8 +144,6 @@
 		0B8D7D8B19C654A3007202A4 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		0B8D7D8D19C7520E007202A4 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		0B8D7D8E19C7520E007202A4 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
-		0B8E36C219C9381B00B32A5D /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		0B8E36C319C9381B00B32A5D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		0B8E36C819C941EE00B32A5D /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
 		0B8E36C919C941EE00B32A5D /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		0B8E36CE19CA4FBD00B32A5D /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
@@ -269,14 +275,16 @@
 				0B8E36D219CA4FE300B32A5D /* CartTableViewCell.m */,
 				0BA2E16419CBB5FC00C1EC61 /* CheckoutViewController.h */,
 				0BA2E16519CBB5FC00C1EC61 /* CheckoutViewController.m */,
+				0B7E4DDA19CD07C9004E0995 /* ChangeLocationViewController.h */,
+				0B7E4DDB19CD07C9004E0995 /* ChangeLocationViewController.m */,
+				0B7E4DE919CD3969004E0995 /* Location.h */,
+				0B7E4DEA19CD3969004E0995 /* Location.m */,
 				0BA2E16119CB757600C1EC61 /* Item.h */,
 				0BA2E16219CB757600C1EC61 /* Item.m */,
 				0B8D7D8A19C654A3007202A4 /* Order.h */,
 				0B8D7D8B19C654A3007202A4 /* Order.m */,
 				0B7E4DD719CCECE6004E0995 /* FavoriteStore.h */,
 				0B7E4DD819CCECE6004E0995 /* FavoriteStore.m */,
-				0B8E36C219C9381B00B32A5D /* Location.h */,
-				0B8E36C319C9381B00B32A5D /* Location.m */,
 				0B8E36C819C941EE00B32A5D /* Payment.h */,
 				0B8E36C919C941EE00B32A5D /* Payment.m */,
 				0B8D7D7219C5DD72007202A4 /* Appetizer.h */,
@@ -285,6 +293,8 @@
 				0B8D7D7619C5DD82007202A4 /* SoupSalad.m */,
 				0B1801DF19C7BE8A0094F219 /* Store.h */,
 				0B1801E019C7BE8A0094F219 /* Store.m */,
+				0B7E4DE319CD0CE6004E0995 /* NonParseStore.h */,
+				0B7E4DE419CD0CE6004E0995 /* NonParseStore.m */,
 				0B8D7D3219C527B0007202A4 /* Images.xcassets */,
 				0B8D7D2919C527B0007202A4 /* PizzaShack.xcdatamodeld */,
 				0B8D7D1B19C527B0007202A4 /* Supporting Files */,
@@ -421,16 +431,18 @@
 				0BA2E16319CB757600C1EC61 /* Item.m in Sources */,
 				0B1801DE19C7B7180094F219 /* StoreLocationTableViewCell.m in Sources */,
 				0B8D7D5219C52840007202A4 /* MenuViewController.m in Sources */,
+				0B7E4DE519CD0CE6004E0995 /* NonParseStore.m in Sources */,
 				0B8E36CA19C941EE00B32A5D /* Payment.m in Sources */,
 				0B8D7D8619C5F119007202A4 /* DetailOrderViewController.m in Sources */,
 				0B1801DB19C7B4590094F219 /* CardTableViewCell.m in Sources */,
+				0B7E4DDC19CD07C9004E0995 /* ChangeLocationViewController.m in Sources */,
 				0B8D7D7419C5DD72007202A4 /* Appetizer.m in Sources */,
 				0B7E4DD919CCECE6004E0995 /* FavoriteStore.m in Sources */,
-				0B8E36C419C9381B00B32A5D /* Location.m in Sources */,
 				0B8D7D7719C5DD82007202A4 /* SoupSalad.m in Sources */,
 				0B1801E119C7BE8A0094F219 /* Store.m in Sources */,
 				0B1801E719C8E4460094F219 /* DeliveryLocationViewController.m in Sources */,
 				0B8D7D8319C5E9C1007202A4 /* FoodOfTypeListViewController.m in Sources */,
+				0B7E4DEB19CD3969004E0995 /* Location.m in Sources */,
 				0B8D7D2519C527B0007202A4 /* AppDelegate.m in Sources */,
 				0B8D7D2B19C527B0007202A4 /* PizzaShack.xcdatamodeld in Sources */,
 				0B1801EA19C8E5A50094F219 /* DeliveryLocationTableViewCell.m in Sources */,

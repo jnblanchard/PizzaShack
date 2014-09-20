@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.items = [NSMutableArray new];
     self.lastSelectedRowIndex = 3210123;
     self.view.backgroundColor = DARKBAYCOLOR;
     self.tableView.backgroundColor = DARKBAYCOLOR;
@@ -40,18 +41,19 @@
     self.checkoutButton.backgroundColor = REDCOLOR;
     self.checkoutButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.checkoutButton.layer.borderWidth = 2.0f;
+    self.willSegue = NO;
+    self.selectedRowIndex = 500;
+    [self grabCurrentOrder];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     self.willSegue = NO;
     self.selectedRowIndex = 500;
-    [self grabCurrentOrder];
 }
 
 -(void)grabCurrentOrder
 {
-    self.items = [NSMutableArray new];
     self.total = [NSNumber numberWithInt:0];
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Item"];
     NSArray* temp = [self.managedObjectContext executeFetchRequest:request error:nil];
@@ -206,6 +208,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Item* item = [self.items objectAtIndex:indexPath.row];
+    [self.items removeObject:item];
     [self.managedObjectContext deleteObject:item];
     [self.managedObjectContext save:nil];
     [self grabCurrentOrder];
@@ -221,10 +224,11 @@
     self.willSegue = YES;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-    if ([segue.destinationViewController isKindOfClass:[MenuViewController class]]) {
-        MenuViewController* mvc = segue.destinationViewController;
-        mvc.managedObjectContext = self.managedObjectContext;
-    }
+//    if ([segue.destinationViewController isKindOfClass:[MenuViewController class]]) {
+//        NSLog(@"here");
+//        MenuViewController* mvc = segue.destinationViewController;
+//        mvc.managedObjectContext = self.managedObjectContext;
+//    }
     if ([segue.destinationViewController isKindOfClass:[CheckoutViewController class]]) {
         CheckoutViewController* cvc = segue.destinationViewController;
         cvc.managedObjectContext = self.managedObjectContext;

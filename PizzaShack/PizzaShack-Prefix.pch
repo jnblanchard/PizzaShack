@@ -15,8 +15,10 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import "Parse/Parse.h"
+    #import "NonParseStore.h"
     #define REDCOLOR [UIColor colorWithRed:0.78 green:0 blue:0.0078 alpha:1];
     #define BAYCOLOR [UIColor colorWithRed:0.96 green:0.92 blue:0.73 alpha:1];
     #define GREENCOLOR [UIColor colorWithRed:0 green:0.43 blue:0.25 alpha:1];
     #define DARKBAYCOLOR [UIColor colorWithRed:1 green:0.85 blue:0.41 alpha:1];
+#define nonParseStoreArray @[[[NonParseStore alloc] initWithString:@"Sonoma Hwy 12" withLocation:[[CLLocation alloc] initWithLatitude:38.307886 longitude:-122.47865] withPhone:@"(707) 938-3600" withAddress:@"18636 Hwy 12 Sonoma, CA 95476"], [[NonParseStore alloc] initWithString:@"Napa Jefferson St." withLocation:[[CLLocation alloc] initWithLatitude:38.316936 longitude:-122.298618] withPhone:@"(707) 257-3300" withAddress:@"3085 Jefferson St Napa, CA 94558"], [[NonParseStore alloc] initWithString:@"Sonoma Plaza" withLocation:[[CLLocation alloc] initWithLatitude:38.293873 longitude:-122.457786] withPhone:@"(707) 938-8300" withAddress:@"8 W Spain St Sonoma, CA 95476"]];
 #endif

@@ -7,6 +7,8 @@
 //
 
 #import "CheckoutViewController.h"
+#import "CartViewController.h"
+#import "ChangeLocationViewController.h"
 #import "FavoriteStore.h"
 #import "Location.h"
 
@@ -27,6 +29,17 @@
 {
     [super viewDidLoad];
     [self populateCheckoutView];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (self.locationSegmentedControl.selectedSegmentIndex == 1) {
+        self.locationSegmentedControl.selectedSegmentIndex = 0;
+        self.locationSegmentedControl.selectedSegmentIndex = 1;
+    } else {
+        self.locationSegmentedControl.selectedSegmentIndex = 1;
+        self.locationSegmentedControl.selectedSegmentIndex = 0;
+    }
 }
 
 - (void) populateCheckoutView
@@ -66,15 +79,19 @@
     self.deliveryLocationButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.deliveryLocationButton.layer.borderWidth = 2.0f;
 
-    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Location"];
-    NSArray* temp = [self.managedObjectContext executeFetchRequest:request error:nil];
-    for (Location* location in temp) {
-        if (location.favorite) {
-            self.locationMainLabel.text = [NSString stringWithFormat:@"  %@",location.streetAddress];
-            self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  %@",location.addressDetail];
+    if (!self.aLocation) {
+        NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Location"];
+        NSArray* temp = [self.managedObjectContext executeFetchRequest:request error:nil];
+        for (Location* location in temp) {
+            if (location.favorite) {
+                self.locationMainLabel.text = [NSString stringWithFormat:@"  %@",location.streetAddress];
+                self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  %@",location.addressDetail];
+            }
         }
+    } else {
+        self.locationMainLabel.text = [NSString stringWithFormat:@"  %@", self.aLocation.streetAddress];
+        self.locationSecondaryLabel.text = [NSString stringWithFormat:@"  %@", self.aLocation.addressDetail];
     }
-
 }
 
 
@@ -120,4 +137,20 @@
 
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[ChangeLocationViewController class]]) {
+        ChangeLocationViewController* cvc = segue.destinationViewController;
+        if ([self.deliveryLocationButton.titleLabel.text isEqualToString:@"Change Delivery Location"]) {
+            cvc.isDelivery = YES;
+        } else {
+            cvc.isDelivery = NO;
+        }
+        cvc.managedObjectContext = self.managedObjectContext;
+    }
+    if ([segue.destinationViewController isKindOfClass:[CartViewController class]]) {
+        CartViewController* cvc = segue.destinationViewController;
+        cvc.managedObjectContext = self.managedObjectContext;
+    }
+}
 @end

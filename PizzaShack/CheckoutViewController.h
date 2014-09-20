@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Location.h"
 
 @interface CheckoutViewController : UIViewController
 @property NSManagedObjectContext* managedObjectContext;
 @property NSMutableArray* items;
+@property Location* aLocation;
+@property (weak, nonatomic) IBOutlet UILabel *streetAddress;
+@property (weak, nonatomic) IBOutlet UILabel *detailAddress;
+@property NonParseStore* store;
 @end

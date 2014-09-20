@@ -185,10 +185,10 @@
     self.dressingButton.backgroundColor = REDCOLOR;
     self.dressingButton.clipsToBounds = YES;
     self.dressingButton.layer.cornerRadius = 10;
-    self.priceLabel.backgroundColor = REDCOLOR;
+    self.priceLabel.backgroundColor = GREENCOLOR;
     self.priceLabel.clipsToBounds = YES;
     self.priceLabel.layer.cornerRadius = 10;
-    self.bigPriceLabel.backgroundColor = REDCOLOR;
+    self.bigPriceLabel.backgroundColor = GREENCOLOR;
     self.bigPriceLabel.clipsToBounds = YES;
     self.bigPriceLabel.layer.cornerRadius = 22;
     self.quantityButton.titleLabel.textColor = [UIColor whiteColor];

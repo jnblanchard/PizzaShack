@@ -13,6 +13,8 @@
 #import "AddCardViewController.h"
 #import "MenuViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Location.h"
+#import "NonParseStore.h"
 #import "Store.h"
 #import "Payment.h"
 #import "FavoriteStore.h"
@@ -44,6 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = REDCOLOR;
     [self updateLocation];
 }
 
@@ -116,36 +119,63 @@
 
 -(void) populateStoreArray
 {
-    PFQuery* query = [Store query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSArray* temp = objects;
-        self.storeArray = [temp mutableCopy];
-        [self.storeArray sortUsingComparator:^NSComparisonResult(Store* obj1, Store* obj2) {
-            double first  = [self.curGeoPoint distanceInMilesTo:obj1.location];
-            double second = [self.curGeoPoint distanceInMilesTo:obj2.location];
-            if (first <= second ) {
-                return NSOrderedAscending;
-            } else {
-                return NSOrderedDescending;
-            }
-        }];
-        NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"FavoriteStore"];
-        FavoriteStore* fav = [self.managedObjectContext executeFetchRequest:request error:nil].firstObject;
-        self.favStore = fav;
-        if (fav) {
-            for (Store* store in self.storeArray) {
-                if ([store.name isEqualToString:fav.name]) {
-                    int favIndex = [self.storeArray indexOfObject:store];
-                    [self.storeArray addObject:[NSNumber numberWithInt:favIndex]];
-                    break;
-                }
-            }
+    NSArray* temp = nonParseStoreArray;
+    self.storeArray = [temp mutableCopy];
+    [self.storeArray sortUsingComparator:^NSComparisonResult(NonParseStore* obj1, NonParseStore* obj2) {
+        int first  = [self.curLocation distanceFromLocation:obj1.location];
+        int second = [self.curLocation distanceFromLocation:obj2.location];
+        if (first <= second ) {
+            return NSOrderedAscending;
         } else {
-            self.favStore = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteStore" inManagedObjectContext:self.managedObjectContext];
-            [self.managedObjectContext save:nil];
+            return NSOrderedDescending;
         }
-        [self.storeLocationTableView reloadData];
     }];
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"FavoriteStore"];
+    FavoriteStore* fav = [self.managedObjectContext executeFetchRequest:request error:nil].firstObject;
+    self.favStore = fav;
+    if (fav) {
+        for (NonParseStore* store in self.storeArray) {
+            if ([store.name isEqualToString:fav.name]) {
+                int favIndex = [self.storeArray indexOfObject:store];
+                [self.storeArray addObject:[NSNumber numberWithInt:favIndex]];
+                break;
+            }
+        }
+    } else {
+        self.favStore = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteStore" inManagedObjectContext:self.managedObjectContext];
+        [self.managedObjectContext save:nil];
+    }
+    [self.storeLocationTableView reloadData];
+//    PFQuery* query = [Store query];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        NSArray* temp = objects;
+//        self.storeArray = [temp mutableCopy];
+//        [self.storeArray sortUsingComparator:^NSComparisonResult(Store* obj1, Store* obj2) {
+//            double first  = [self.curGeoPoint distanceInMilesTo:obj1.location];
+//            double second = [self.curGeoPoint distanceInMilesTo:obj2.location];
+//            if (first <= second ) {
+//                return NSOrderedAscending;
+//            } else {
+//                return NSOrderedDescending;
+//            }
+//        }];
+//        NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"FavoriteStore"];
+//        FavoriteStore* fav = [self.managedObjectContext executeFetchRequest:request error:nil].firstObject;
+//        self.favStore = fav;
+//        if (fav) {
+//            for (Store* store in self.storeArray) {
+//                if ([store.name isEqualToString:fav.name]) {
+//                    int favIndex = [self.storeArray indexOfObject:store];
+//                    [self.storeArray addObject:[NSNumber numberWithInt:favIndex]];
+//                    break;
+//                }
+//            }
+//        } else {
+//            self.favStore = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteStore" inManagedObjectContext:self.managedObjectContext];
+//            [self.managedObjectContext save:nil];
+//        }
+//        [self.storeLocationTableView reloadData];
+//    }];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,7 +217,7 @@
         [self.managedObjectContext save:nil];
         [self populatePaymentArray];
     } else {
-        Store* store = [self.storeArray objectAtIndex:indexPath.row];
+        NonParseStore* store = [self.storeArray objectAtIndex:indexPath.row];
         self.favStore.name = store.name;
         self.favStore.address = store.address;
         [self.managedObjectContext save:nil];
@@ -219,7 +249,7 @@
         cell.nameLabel.text = payment.holder;
         return cell;
     } else {
-        Store* store = [self.storeArray objectAtIndex:indexPath.row];
+        NonParseStore* store = [self.storeArray objectAtIndex:indexPath.row];
         StoreLocationTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.checkMarkImageView.image = nil;
         cell.backgroundColor = BAYCOLOR;
@@ -232,7 +262,7 @@
             }
         }
         cell.storeName.text = store.name;
-        cell.storeDistance.text = [NSString stringWithFormat:@"%.0fmi", [self.curGeoPoint distanceInMilesTo:store.location]];
+        cell.storeDistance.text = [NSString stringWithFormat:@"%.0fmi", ([self.curLocation distanceFromLocation:store.location] * 0.000621371)];
         return cell;
     }
 }
