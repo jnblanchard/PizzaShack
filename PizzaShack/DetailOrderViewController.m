@@ -69,9 +69,11 @@
 - (IBAction)valueOfSwitchChanged:(UISwitch *)sender
 {
     if (sender.on) {
+        self.addItem = self.item.addItem;
         self.addition = self.item.addItemPrice;
         [self calculatePriceSetLabel];
     } else {
+        self.addItem = @"";
         self.addition = 0;
         [self calculatePriceSetLabel];
     }
@@ -88,6 +90,7 @@
 {
     self.addItem = self.item.addItem;
     if (self.addItem) {
+        self.addItem = @"";
         self.addSwitch.hidden = NO;
         self.addLabel.hidden = NO;
         self.addSwitch.thumbTintColor = BAYCOLOR;

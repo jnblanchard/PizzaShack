@@ -136,6 +136,9 @@
 //        [cell.contentView addSubview:separatorLineViewTwo];
         Item* item = [self.items objectAtIndex:indexPath.row];
         cell.layer.borderWidth = 0.0f;
+        if ([item.size isEqualToString:@"First"]) {
+            item.size = @"";
+        }
         if (![item.size isEqualToString:@""] || item.size != nil) {
             cell.mainTextLabel.text = [NSString stringWithFormat:@"%@x %@ %@", item.quantity, item.size, item.name];
         } else {
@@ -211,7 +214,11 @@
     [self.items removeObject:item];
     [self.managedObjectContext deleteObject:item];
     [self.managedObjectContext save:nil];
-    [self grabCurrentOrder];
+    NSLog(@"items count - %lu", (unsigned long)self.items.count);
+    if (!self.items.count) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

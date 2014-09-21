@@ -458,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnO-dj-szu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1098" y="-739"/>
+            <point key="canvasLocation" x="1098" y="-752"/>
         </scene>
         <!--Menu View Controller - Menu-->
         <scene sceneID="rZf-0V-yyX">
@@ -702,7 +702,69 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ei3-Z7-Y7k">
                                 <rect key="frame" x="7" y="5" width="306" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Card Holder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHc-Bd-9mf">
+                                        <rect key="frame" x="5" y="5" width="296" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.12889330169999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="0.12889330169999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="  Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt2-mV-Gis">
+                                        <rect key="frame" x="5" y="55" width="296" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.12889330169999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="0.12889330169999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pns-7c-vJM">
+                                        <rect key="frame" x="5" y="104" width="296" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Card"/>
+                                            <segment title="Cash"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="paymentSegmentedControlValueChange:" destination="DDY-6c-o0L" eventType="valueChanged" id="3VS-Zb-scA"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71Z-xh-1D7">
+                                        <rect key="frame" x="5" y="139" width="296" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.12889330169999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="Change Card Payment">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="4Dh-RO-pWf" kind="push" id="CMR-Ld-mhG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="YHc-Bd-9mf" firstAttribute="leading" secondItem="ei3-Z7-Y7k" secondAttribute="leading" constant="5" id="490-mP-7Ys"/>
+                                    <constraint firstItem="pns-7c-vJM" firstAttribute="width" secondItem="YHc-Bd-9mf" secondAttribute="height" multiplier="148:21" id="Cam-7j-SAN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wt2-mV-Gis" secondAttribute="trailing" constant="5" id="Hkv-bE-xwe"/>
+                                    <constraint firstItem="71Z-xh-1D7" firstAttribute="top" secondItem="pns-7c-vJM" secondAttribute="bottom" constant="7" id="J5l-fh-Mot"/>
+                                    <constraint firstAttribute="bottom" secondItem="71Z-xh-1D7" secondAttribute="bottom" constant="5" id="Mc0-Vl-BXf"/>
+                                    <constraint firstItem="71Z-xh-1D7" firstAttribute="leading" secondItem="ei3-Z7-Y7k" secondAttribute="leading" constant="5" id="Yqq-xJ-DCE"/>
+                                    <constraint firstAttribute="trailing" secondItem="71Z-xh-1D7" secondAttribute="trailing" constant="5" id="a6A-wU-bRS"/>
+                                    <constraint firstAttribute="trailing" secondItem="YHc-Bd-9mf" secondAttribute="trailing" constant="5" id="b8L-wR-gDV"/>
+                                    <constraint firstItem="Wt2-mV-Gis" firstAttribute="leading" secondItem="ei3-Z7-Y7k" secondAttribute="leading" constant="5" id="cMk-pu-p4Z"/>
+                                    <constraint firstItem="pns-7c-vJM" firstAttribute="width" secondItem="71Z-xh-1D7" secondAttribute="height" multiplier="296:81" id="hwK-IT-uGX"/>
+                                    <constraint firstItem="pns-7c-vJM" firstAttribute="width" secondItem="Wt2-mV-Gis" secondAttribute="height" multiplier="37:5" id="l7D-7C-43J"/>
+                                    <constraint firstItem="pns-7c-vJM" firstAttribute="leading" secondItem="ei3-Z7-Y7k" secondAttribute="leading" constant="5" id="mZ3-Gp-D3t"/>
+                                    <constraint firstItem="YHc-Bd-9mf" firstAttribute="top" secondItem="ei3-Z7-Y7k" secondAttribute="top" constant="5" id="mcc-pI-6Za"/>
+                                    <constraint firstItem="Wt2-mV-Gis" firstAttribute="top" secondItem="YHc-Bd-9mf" secondAttribute="bottom" constant="3" id="ueO-Zm-Ha1"/>
+                                    <constraint firstAttribute="trailing" secondItem="pns-7c-vJM" secondAttribute="trailing" constant="5" id="vNW-ne-x18"/>
+                                    <constraint firstItem="pns-7c-vJM" firstAttribute="top" secondItem="Wt2-mV-Gis" secondAttribute="bottom" constant="3" id="wiW-R9-w89"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GuQ-Ag-AeL">
                                 <rect key="frame" x="7" y="235" width="306" height="225"/>
@@ -814,12 +876,16 @@
                         <barButtonItem key="backBarButtonItem" title="Cart" id="Qsh-ro-lXQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardHolderLabel" destination="YHc-Bd-9mf" id="kpr-Fb-x08"/>
+                        <outlet property="cardNumberLabel" destination="Wt2-mV-Gis" id="bSC-sA-0ho"/>
                         <outlet property="deliveryLocationButton" destination="Yuu-Gc-VYh" id="iZm-88-Jo3"/>
                         <outlet property="detailAddress" destination="kZ3-Wn-3x3" id="smo-Ym-q4d"/>
                         <outlet property="locationMainLabel" destination="16z-wX-vhY" id="GK6-FM-b0A"/>
                         <outlet property="locationSecondaryLabel" destination="kZ3-Wn-3x3" id="kTG-OH-2Bl"/>
                         <outlet property="locationSegmentedControl" destination="TG7-E3-c4u" id="oiL-fw-H2t"/>
                         <outlet property="locationView" destination="ei3-Z7-Y7k" id="EPA-io-5Mz"/>
+                        <outlet property="paymentButton" destination="71Z-xh-1D7" id="om6-TV-4Ev"/>
+                        <outlet property="paymentSegmentedControl" destination="pns-7c-vJM" id="fAx-2l-Mv6"/>
                         <outlet property="paymentView" destination="GuQ-Ag-AeL" id="JzZ-ZL-65f"/>
                         <outlet property="placeOrderButton" destination="m3C-fZ-xKj" id="UtA-Ut-7m4"/>
                         <outlet property="streetAddress" destination="16z-wX-vhY" id="z7y-VA-ck3"/>
@@ -1346,7 +1412,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ODJ-M3-5Co"/>
         <segue reference="Osj-Ue-Dcu"/>
-        <segue reference="cQC-lk-cVG"/>
+        <segue reference="CMR-Ld-mhG"/>
     </inferredMetricsTieBreakers>
 </document>

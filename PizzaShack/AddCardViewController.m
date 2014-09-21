@@ -7,6 +7,7 @@
 //
 
 #import "AddCardViewController.h"
+#import "CheckoutViewController.h"
 #import "WalletViewController.h"
 #import "Payment.h"
 
@@ -21,6 +22,7 @@
 @property UIActionSheet* sheet;
 @property UIPickerView* picker;
 @property NSDate* expiration;
+@property Payment* aPayment;
 @end
 
 @implementation AddCardViewController
@@ -160,7 +162,14 @@
         payment.cardNumber = self.cardNumber.text;
         payment.holder = self.cardHolder.text;
         payment.expDate = self.expiration;
+        self.aPayment = payment;
         [self.managedObjectContext save:nil];
+        for (UIViewController* vc in self.navigationController.viewControllers) {
+            if ([vc isKindOfClass:[CheckoutViewController class]]) {
+                CheckoutViewController* cvc = (CheckoutViewController*)vc;
+                cvc.aPayment = self.aPayment;
+            }
+        }
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Missing Information" message:@"Please enter information about your card." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
@@ -199,6 +208,12 @@
     if ([segue.destinationViewController isKindOfClass:[WalletViewController class]]) {
         WalletViewController* wvc = segue.destinationViewController;
         wvc.managedObjectContext = self.managedObjectContext;
+    }
+    if ([segue.destinationViewController isKindOfClass:[CheckoutViewController class]]) {
+        NSLog(@"here");
+        CheckoutViewController* cvc = segue.destinationViewController;
+        cvc.managedObjectContext = self.managedObjectContext;
+        cvc.aPayment = self.aPayment;
     }
 }
 

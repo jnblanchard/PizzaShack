@@ -32,6 +32,10 @@
     [self populateFoodTypeArray];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+}
+
 -(void)populateFoodTypeArray
 {
     self.foodTypes = [NSMutableArray new];
@@ -41,8 +45,15 @@
     self.navigationController.navigationBar.barTintColor = REDCOLOR;
     self.navigationController.navigationBar.translucent = NO;
     self.typeTableView.backgroundColor = DARKBAYCOLOR;
-    NSArray* array = nonParseSoupSaladdArray;
+
+    NSArray* array = nonParseAppetizersArray;
     NSMutableArray* temp = [[NSMutableArray alloc] initWithArray:array];
+    [temp addObject:@"Appetizers"];
+    [temp addObject:[UIImage imageNamed:@"bread"]];
+    [self.foodTypes addObject:temp];
+
+    array = nonParseSoupSaladdArray;
+    temp = [[NSMutableArray alloc] initWithArray:array];
     [temp addObject:@"Soups & Salads"];
     [temp addObject:[UIImage imageNamed:@"salad"]];
     [self.foodTypes addObject:temp];
@@ -96,9 +107,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.foodArrayToPass = [self.foodTypes objectAtIndex:self.typeTableView.indexPathForSelectedRow.row];
     if ([segue.destinationViewController isKindOfClass:[FoodOfTypeListViewController class]]) {
         FoodOfTypeListViewController* fvc = segue.destinationViewController;
+        self.foodArrayToPass = [self.foodTypes objectAtIndex:self.typeTableView.indexPathForSelectedRow.row];
         fvc.managedObjectContext = self.managedObjectContext;
         fvc.navigationItem.title = [self.foodArrayToPass objectAtIndex:self.foodArrayToPass.count-2];
         fvc.foodList = self.foodArrayToPass;
